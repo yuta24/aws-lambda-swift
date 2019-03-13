@@ -60,9 +60,14 @@ package_layer: clean_layer
 					/lib/x86_64-linux-gnu/libssl.so.1.0.0 \
 					/lib/x86_64-linux-gnu/libutil.so.1 \
 					/lib/x86_64-linux-gnu/libz.so.1 \
+					/usr/lib/swift/linux/libBlocksRuntime.so \
 					/usr/lib/swift/linux/libFoundation.so \
 					/usr/lib/swift/linux/libdispatch.so \
+					/usr/lib/swift/linux/libicudataswift.so.61 \
+					/usr/lib/swift/linux/libicui18nswift.so.61 \
+					/usr/lib/swift/linux/libicuucswift.so.61 \
 					/usr/lib/swift/linux/libswiftCore.so \
+					/usr/lib/swift/linux/libswiftDispatch.so \
 					/usr/lib/swift/linux/libswiftGlibc.so \
 					/usr/lib/swift/linux/libswiftSwiftOnoneSupport.so \
 					/usr/lib/x86_64-linux-gnu/libasn1.so.8 \
