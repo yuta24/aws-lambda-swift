@@ -7,6 +7,7 @@ EXAMPLE_PROJECT_PATH=Examples/SquareNumber
 LAMBDA_ZIP=lambda.zip
 SHARED_LIBS_FOLDER=swift-shared-libs
 LAYER_ZIP=swift-lambda-runtime.zip
+DOCKER_IMAGE=norionomura/swift:swift-5.0-branch
 
 clean_lambda:
 	rm $(LAMBDA_ZIP) || true
@@ -17,7 +18,7 @@ build_lambda:
 			--rm \
 			--volume "$(shell pwd)/:/src" \
 			--workdir "/src/$(EXAMPLE_PROJECT_PATH)" \
-			swift \
+			${DOCKER_IMAGE} \
 			swift build
 
 package_lambda: clean_lambda build_lambda
@@ -36,13 +37,13 @@ package_layer: clean_layer
 			--rm \
 			--volume "$(shell pwd)/:/src" \
 			--workdir "/src" \
-			swift \
+			${DOCKER_IMAGE} \
 			cp /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 $(SHARED_LIBS_FOLDER)
 	docker run \
 			--rm \
 			--volume "$(shell pwd)/:/src" \
 			--workdir "/src" \
-			swift \
+			${DOCKER_IMAGE} \
 			cp -t $(SHARED_LIBS_FOLDER)/lib \
 					/lib/x86_64-linux-gnu/libbsd.so.0 \
 					/lib/x86_64-linux-gnu/libc.so.6 \
